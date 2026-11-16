@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #f0f4f8;
+    --color-card: #ffffff;
+    --color-text: #1a202c;
+    --color-text-muted: #718096;
+    --color-border: #e2e8f0;
+  }
+  :root.dark {
+    --color-bg: #0f172a;
+    --color-card: #1e293b;
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-border: #334155;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+/* Hide number input arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* Notification slide-in */
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Smooth page transitions */
+main { animation: fadeIn 0.18s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Recharts tooltip override */
+.recharts-tooltip-wrapper { outline: none !important; }
+
+/* Select element dark mode fix */
+.dark select option { background-color: #1e293b; color: #f1f5f9; }
